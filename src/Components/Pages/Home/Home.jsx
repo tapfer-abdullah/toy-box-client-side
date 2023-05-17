@@ -1,15 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Header from '../Shared/Header';
-import Footer from '../Shared/Footer';
+import Banner from './Banner';
 
 const Home = () => {
     return (
         <div className='max-w-7xl mx-auto'>
-            <Header></Header>
-            <Outlet></Outlet>
-            <Footer></Footer>
+            <Banner></Banner>
         </div>
     );
 };
