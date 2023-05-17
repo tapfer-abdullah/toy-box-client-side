@@ -85,7 +85,7 @@ const Register = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <input className="btn bg-my-blue border-my-blue hover:bg-my-pink hover:border-my-pink" type="submit" value="Register" />
+                <input className="btn bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue" type="submit" value="Register" />
               </div>
               <div className="divider">OR</div>
               <div>
