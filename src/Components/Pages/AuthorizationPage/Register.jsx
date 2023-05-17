@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
 
@@ -21,13 +22,13 @@ const Register = () => {
     <div>
       <div className="hero bg-base-200">
 
-          <div className="card my-10 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card my-10 w-4/5 md:w-2/5 px-5 md:px-8 shadow-2xl bg-base-100">
             <h3 className="text-3xl font-bold text-center mt-10 text-my-blue">
               Please <span className="text-my-pink">Register</span>
             </h3>
             
             <form onSubmit={handleRegister}>
-            <div className="card-body">
+            <div className="card-body mb-5">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -85,6 +86,12 @@ const Register = () => {
               </div>
               <div className="form-control mt-6">
                 <input className="btn bg-my-blue border-my-blue hover:bg-my-pink hover:border-my-pink" type="submit" value="Register" />
+              </div>
+              <div className="divider">OR</div>
+              <div>
+                <button className="btn bg-my-blue border-my-blue hover:bg-my-pink hover:border-my-pink w-full"
+                ><FaGoogle className='mr-1 text-2xl'/> 
+                Sing in with Google</button>
               </div>
             </div>
             </form>

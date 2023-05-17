@@ -20,6 +20,7 @@ export default {
       'bermuda': '#78dcca',
       "my-pink" : "#ff6799",
       "my-blue": "#4acdd5",
+      "my-yellow" : "#fdb819",
     },
   },
   plugins: [require("daisyui")],
