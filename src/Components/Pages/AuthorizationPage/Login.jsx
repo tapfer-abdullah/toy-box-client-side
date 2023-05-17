@@ -62,7 +62,7 @@ const Login = () => {
               </div>
 
               <div className="form-control mt-6">
-                <input className="btn bg-my-blue border-my-blue hover:bg-my-pink hover:border-my-pink" type="submit" value="Log in" />
+                <input className="btn bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue" type="submit" value="Log in" />
               </div>
               <div className="divider">OR</div>
               <div>

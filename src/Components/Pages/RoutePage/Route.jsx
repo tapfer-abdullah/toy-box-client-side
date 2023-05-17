@@ -1,27 +1,30 @@
 /* eslint-disable no-unused-vars */
-import {
-    createBrowserRouter,
-    RouterProvider,
-  } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../Home/Home";
 import Login from "../AuthorizationPage/Login";
 import Register from "../AuthorizationPage/Register";
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home></Home>,
-      children: [
-        {
-            path: "login",
-            element: <Login></Login>
-        },
-        {
-            path: "/register",
-            element: <Register></Register>
-        }
-      ]
-    },
-  ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home></Home>,
+    children: [
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/all-toys"
+      },
+      {
+        path: "/blogs"
+      }
+    ],
+  },
+]);
 
-  export default router;
+export default router;
