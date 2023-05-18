@@ -1,6 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
+
+
 const Banner = () => {
   const img = "https://i8.amplience.net/i/egl/toys-240423-gooutdoors-ld";
   const img2 ="https://www.smarterkids.com/static/homepage-18a1bd7ddcc32e7393a29cd6973790e2.jpg";
@@ -14,7 +19,7 @@ const Banner = () => {
       style={{ background: "rgba(0, 0, 0, .5)" }}
     >
       <div className="text-white">
-        <div className="w-2/3 mx-auto text-center">
+        <div className="w-2/3 mx-auto text-center "  data-aos="zoom-in-up">
           <h2 className="text-6xl font-bold uppercase">
             Pick your best toy for your kid
           </h2>
@@ -34,7 +39,7 @@ const Banner = () => {
   return (
     <div className="relative rounded-lg mt-10">
       <div className="carousel w-full rounded-lg">
-        <div id="slide1" className="carousel-item relative w-full max-h-[600px] rounded-lg">
+        <div id="slide1" className="carousel-item relative w-full max-h-[600px] rounded-lg ">
           <img src={img} className="w-full " />
 
           {overlay}
