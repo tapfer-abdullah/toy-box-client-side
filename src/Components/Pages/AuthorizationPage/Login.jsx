@@ -42,7 +42,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="hero bg-base-200">
+      <div className="hero ">
         <div className="card my-10 w-4/5 md:w-2/5 px-5 md:px-8 shadow-2xl bg-base-100">
           <h3 className="text-3xl font-bold text-center mt-10 text-my-blue">
             Please <span className="text-my-pink">Login</span>
