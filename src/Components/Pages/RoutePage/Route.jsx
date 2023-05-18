@@ -31,6 +31,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/blogs"
+      },
+      {
+        path: "add-a-toy",
+      },
+      {
+        path: "my-toys",
       }
     ],
   },

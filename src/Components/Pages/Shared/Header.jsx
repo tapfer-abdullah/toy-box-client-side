@@ -1,10 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthorizationPage/AuthProvider";
 
 const Header = () => {
   // Website logo, Website name, Home, All Toys, My Toys, Add A Toy, Blogs, and User profile picture.
+
+  const { user , Logout} = useContext(AuthContext);
+  // console.log(user)
+  const handleLogout = () =>{
+    Logout()
+    .then(() => {
+      console.log("Log out successfully")
+    })
+    .catch(err => console.log(err));
+  }
 
   const menu = (
     <>
@@ -41,6 +52,31 @@ const Header = () => {
     </>
   );
 
+  const conditionalMenu = (
+    <>
+      <li>
+        <NavLink
+          to="/my-toys"
+          className={({ isActive }) =>
+            isActive ? "text-my-pink text-lg font-semibold" : ""
+          }
+        >
+          My Toys
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/add-a-toy"
+          className={({ isActive }) =>
+            isActive ? "text-my-pink text-lg font-semibold" : ""
+          }
+        >
+          Add A Toy
+        </NavLink>
+      </li>
+    </>
+  );
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -67,6 +103,7 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {menu}
+              {user && conditionalMenu}
             </ul>
           </div>
           <Link to="/" className="text-my-blue text-5xl font-bold">
@@ -74,12 +111,34 @@ const Header = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{menu}</ul>
+          <ul className="menu menu-horizontal px-1">
+            {menu}
+            {user && conditionalMenu}
+          </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login"
-          className="btn btn-outline hover:bg-my-pink hover:border-my-pink text-my-blue border-my-blue"
-          >Log in</Link>
+          {user ? (
+            <>
+            <img
+            className="h-12 w-12 rounded-full mx-3"
+            title={user?.displayName}
+             src={user?.photoURL} alt="userImg" />
+              <Link
+              onClick={handleLogout}
+                // to="/login"
+                className="btn btn-outline hover:bg-my-pink hover:border-my-pink text-my-blue border-my-blue"
+              >
+                Log out
+              </Link>
+            </>
+          ) : (
+            <Link
+              to="/login"
+              className="btn btn-outline hover:bg-my-pink hover:border-my-pink text-my-blue border-my-blue"
+            >
+              Log in
+            </Link>
+          )}
         </div>
       </div>
     </div>
