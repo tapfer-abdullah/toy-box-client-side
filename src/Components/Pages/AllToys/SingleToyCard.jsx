@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthorizationPage/AuthProvider";
 
-const SingleToyCard = ({ toy }) => {
+const SingleToyCard = ({ toy, setSingleData }) => {
+  const { user } = useContext(AuthContext);
+
   const {
     name,
     quantity,
@@ -22,7 +25,7 @@ const SingleToyCard = ({ toy }) => {
 
     // </div>
 
-    <tr className="text-center">
+    <tr className="text-center" data-aos="fade-up">
       <td></td>
       <td>
         <div className="mask w-32 h-28">
@@ -30,15 +33,29 @@ const SingleToyCard = ({ toy }) => {
         </div>
       </td>
       <td>
-        <div className="font-bold">Hart Hagerty</div>
+        <div className="font-bold text-my-pink">{name}</div>
       </td>
 
-      <td>{"$ " + price}</td>
-      <td>{quantity}</td>
-      <td>{seller}</td>
-      <td>{category}</td>
+      <td className="text-my-yellow font-semibold">{"$ " + price}</td>
+      <td className="text-my-blue font-semibold">{quantity}</td>
+      <td className="font-bold text-my-pink">{seller}</td>
+      <td className="text-my-blue font-semibold">{category}</td>
       <th>
-        <Link className="btn btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue">View Details</Link>
+        {!user ? (
+          <Link to="/login" className="btn btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue">
+            View Details
+          </Link>
+        ) : (
+          <label
+            onClick={() => {
+              setSingleData(toy);
+            }}
+            htmlFor="my-modal-3"
+            className=" btn btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
+          >
+            View Details
+          </label>
+        )}
       </th>
     </tr>
   );
