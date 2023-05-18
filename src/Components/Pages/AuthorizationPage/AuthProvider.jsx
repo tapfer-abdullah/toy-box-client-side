@@ -13,7 +13,8 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import app from "../../Config/config.firebase";
+import app from "../../../Congig/config.firebase.js";
+
 
 const auth = getAuth(app);
 
@@ -52,15 +53,16 @@ const AuthProvider = ({ children }) => {
 
   const handleUpdateProfile = (name, photoURL) =>{
     // setLoader(true);
-    updateProfile(auth.currentUser, {
+    return updateProfile(auth.currentUser, {
       displayName: `${name}`, photoURL: `${photoURL}`
-    }).then(() => {
-      console.log("profile updated");
-      Logout();
-    }).catch((error) => {
-      console.log(error)
     })
-    // setLoader(false);
+    // .then(() => {
+    //   console.log("profile updated");
+    //   Logout();
+    // }).catch((error) => {
+    //   console.log(error)
+    // })
+    // // setLoader(false);
   }
 
   const authInfo = {

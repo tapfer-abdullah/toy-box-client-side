@@ -1,34 +1,56 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "./AuthProvider";
 
 const Login = () => {
-    const handleLogin = event =>{
-        event.preventDefault();
-        const form = event.target;
-        
-        const email = form.email.value;
-        const password = form.password.value;
-        
-        console.log(email, password)
+  const [error, setError] = useState("");
+  const { user, LoginWGoogle, Login } = useContext(AuthContext);
 
-    }
+  const handleLoginWGoogle = () => {
+    LoginWGoogle()
+      .then((result) => {
+        console.log(result.user);
+        setError("");
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message)
+      });
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+    Login(email, password)
+    .then(r => {
+      console.log(r.user);
+      setError("");
+    })
+    .catch(err =>{
+      console.log(err);
+      setError(err.message);
+    })
+  };
 
   return (
     <div>
       <div className="hero bg-base-200">
+        <div className="card my-10 w-4/5 md:w-2/5 px-5 md:px-8 shadow-2xl bg-base-100">
+          <h3 className="text-3xl font-bold text-center mt-10 text-my-blue">
+            Please <span className="text-my-pink">Login</span>
+          </h3>
 
-          <div className="card my-10 w-4/5 md:w-2/5 px-5 md:px-8 shadow-2xl bg-base-100">
-            <h3 className="text-3xl font-bold text-center mt-10 text-my-blue">
-              Please <span className="text-my-pink">Login</span>
-            </h3>
-            
-            <form onSubmit={handleLogin}>
-            <div className="card-body mb-5">
-              
-
+          <form onSubmit={handleLogin}>
+            <div className="card-body">
+            {error && <p className="text-red text-center">{error}</p>}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -54,7 +76,10 @@ const Login = () => {
                 <label className="label">
                   <p className="mt-2">
                     Don't have an account?{" "}
-                    <Link to="/register" className=" text-my-blue hover:text-my-pink">
+                    <Link
+                      to="/register"
+                      className=" text-my-blue hover:text-my-pink"
+                    >
                       Register
                     </Link>{" "}
                   </p>
@@ -62,18 +87,25 @@ const Login = () => {
               </div>
 
               <div className="form-control mt-6">
-                <input className="btn bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue" type="submit" value="Log in" />
+                <input
+                  className="btn bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue"
+                  type="submit"
+                  value="Log in"
+                />
               </div>
               <div className="divider">OR</div>
-              <div>
-                <button className="btn bg-my-blue border-my-blue hover:bg-my-pink hover:border-my-pink w-full"
-                ><FaGoogle className='mr-1 text-2xl'/> 
-                Sing in with Google</button>
-              </div>
             </div>
-            </form>
+          </form>
+          <div className="card-body mb-5 -mt-14">
+            <button
+              onClick={handleLoginWGoogle}
+              className="btn bg-my-blue border-my-blue hover:bg-my-pink hover:border-my-pink w-full"
+            >
+              <FaGoogle className="mr-1 text-2xl" />
+              Sing in with Google
+            </button>
           </div>
-
+        </div>
       </div>
     </div>
   );
