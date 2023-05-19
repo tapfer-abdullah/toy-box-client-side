@@ -8,6 +8,7 @@ const SingleMyToy = ({ toy, setSingleData }) => {
   const { user } = useContext(AuthContext);
 
   const {
+    _id,
     name,
     quantity,
     seller,
@@ -41,21 +42,11 @@ const SingleMyToy = ({ toy, setSingleData }) => {
       <td className="font-bold text-my-pink">{seller}</td>
       <td className="text-my-blue font-semibold">{category}</td>
       <th>
-        {!user ? (
-          <Link to="/login" className="btn btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue">
+      
+          <Link to={`/update/${_id}`} className="btn btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue">
             View Details
           </Link>
-        ) : (
-          <label
-            onClick={() => {
-              setSingleData(toy);
-            }}
-            htmlFor="my-modal-3"
-            className=" btn btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
-          >
-            View Details
-          </label>
-        )}
+        
       </th>
     </tr>
   );
