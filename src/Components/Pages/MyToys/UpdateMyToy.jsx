@@ -60,7 +60,8 @@ const UpdateMyToy = () => {
 
     // console.log(toy);
 
-    fetch(`http://localhost:5000/update/${_id}`, {
+    // fetch(`http://localhost:5000/update/${_id}`, {
+    fetch(`https://toy-box-server.vercel.app/update/${_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -14,7 +14,8 @@ const MyToys = () => {
   const [sort, setSort] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-toys?email=${user?.email}`, {
+    // fetch(`http://localhost:5000/my-toys?email=${user?.email}`, {
+    fetch(`https://toy-box-server.vercel.app/my-toys?email=${user?.email}`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +40,8 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        // fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://toy-box-server.vercel.app/delete/${id}`, {
           method: "delete",
         })
           .then((res) => res.json())
