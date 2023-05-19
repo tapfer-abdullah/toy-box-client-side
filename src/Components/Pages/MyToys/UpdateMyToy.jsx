@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../Title/Title";
 
 const UpdateMyToy = () => {
+  useTitle("Update-Toy");
 
   const navigate = useNavigate();
 

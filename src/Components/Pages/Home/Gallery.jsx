@@ -17,7 +17,7 @@ const Gallery = () => {
     <div className="mb-24">
       <div className="text-center mt-24 mb-8">
         <h3 className="text-3xl font-semibold mb-3">Gallery</h3>
-        <p className="text-my-blue">
+        <p className="text-base">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam, porro
           iure eligendi vero vel quo.
         </p>
@@ -32,7 +32,7 @@ const Gallery = () => {
                 alt=""
                 className="rounded-lg w-[295px] h-[295px] border-2 border-my-blue py-5"
               />
-              <Link className="btn btn-outline bg-white text-my-pink hover:text-white hover:border-my-pink hover:bg-my-pink relative bottom-5 left-[6.5rem] btn-sm ml-2">View All</Link>
+              <Link to="/all-toys" className="btn btn-outline bg-white text-my-pink hover:text-white hover:border-my-pink hover:bg-my-pink relative bottom-5 left-[6.5rem] btn-sm ml-2">View All</Link>
             </div>
           </>
         ))}

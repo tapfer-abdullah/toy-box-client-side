@@ -5,8 +5,8 @@ const ShopByCategory = () => {
   return (
     <div>
       <div className="text-center mt-24 mb-8">
-        <h3 className="text-3xl font-semibold mb-3">ShopByCategory</h3>
-        <p className="text-my-blue">
+        <h3 className="text-3xl font-semibold mb-3">Shop By Category</h3>
+        <p className="text-base">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam, porro
           iure eligendi vero vel quo.
         </p>

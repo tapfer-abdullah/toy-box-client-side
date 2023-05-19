@@ -7,9 +7,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { AuthContext } from "../AuthorizationPage/AuthProvider";
 import { Bars } from "react-loader-spinner";
+import useTitle from "../../Title/Title";
 AOS.init();
 
 const AllToys = () => {
+  useTitle("All-Toys");
   const {loader} = useContext(AuthContext);
   const allToys = useLoaderData();
   const [singleData, setSingleData] = useState({});

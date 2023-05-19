@@ -2,8 +2,10 @@
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
 import errorImg from "../../../assets/404-error-page-not-found.jpg"
+import useTitle from "../../Title/Title";
 
 const ErrorPage = () => {
+  useTitle("Error-Page");
   const error = useRouteError();
   //   console.error(error);
 

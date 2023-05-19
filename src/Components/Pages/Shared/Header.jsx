@@ -71,7 +71,7 @@ const Header = () => {
             isActive ? "text-my-pink text-lg font-semibold" : ""
           }
         >
-          Add A Toy
+          Add New Toy
         </NavLink>
       </li>
     </>
@@ -107,7 +107,7 @@ const Header = () => {
             </ul>
           </div>
           <Link to="/" className="text-my-blue text-5xl font-bold">
-            My<span className="text-my-pink ">Toy</span>
+            Toy<span className="text-my-pink ">Box</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

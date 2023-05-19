@@ -9,6 +9,7 @@ import AllToys from "../AllToys/AllToys";
 import AddAToy from "../AddAToy/AddAToy";
 import MyToys from "../MyToys/MyToys";
 import UpdateMyToy from "../MyToys/UpdateMyToy";
+import Blog from "../Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,8 @@ const router = createBrowserRouter([
         loader: () => fetch('http://localhost:5000/all-toys')
       },
       {
-        path: "/blogs"
+        path: "/blogs",
+        element: <Blog></Blog>
       },
       {
         path: "add-a-toy",

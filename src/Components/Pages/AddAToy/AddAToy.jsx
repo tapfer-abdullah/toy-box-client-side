@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import useTitle from "../../Title/Title";
 
 
 const AddAToy = () => {
+  useTitle("Add-New-Toy");
   const [ctgry, setCtgry] = useState("");
 
   const handleFilter = (event) => {

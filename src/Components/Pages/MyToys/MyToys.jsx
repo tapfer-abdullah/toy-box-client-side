@@ -4,8 +4,10 @@ import SingleMyToy from "./SingleMyToy";
 import { AuthContext } from "../AuthorizationPage/AuthProvider";
 import { Bars } from "react-loader-spinner";
 import Swal from "sweetalert2";
+import useTitle from "../../Title/Title";
 
 const MyToys = () => {
+  useTitle("My-Toys");
   const { user, loader } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [del, setDel] = useState(0);
