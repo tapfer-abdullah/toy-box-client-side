@@ -13,13 +13,12 @@ const MyToys = () => {
 
   useEffect(() => {
     fetch(`http://localhost:5000/my-toys?email=${user?.email}`, {
-
-    method: "get",
-        headers: {
-            "Content-Type" : "application/json",
-            "sort" : sort
-        },
-        // body: JSON.stringify({sort}),  
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        sort: sort,
+      },
+      // body: JSON.stringify({sort}),
     })
       .then((res) => res.json())
       .then((data) => setMyToys(data));
@@ -52,6 +51,11 @@ const MyToys = () => {
     });
   };
 
+  const handleFilter = event =>{
+    console.log(event.target.value);
+    setSort(event.target.value);
+  }
+
   return (
     <div style={{ minHeight: "70vh" }}>
       {loader ? (
@@ -68,9 +72,22 @@ const MyToys = () => {
         </div>
       ) : (
         <div className="mt-10">
-          <div className="flex justify-end my-3"> 
-            <div className="dropdown dropdown-hover">
-              <label tabIndex={0} className="btn m-1 bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue">
+          <div className="flex justify-end my-3">
+            
+                <select onChange={handleFilter} className="select select-bordered bg-my-blue text-white font-bold text-lg">
+                  <option disabled selected >
+                  Sort By Price
+                  </option>
+                  <option value={1}>Ascending</option>
+                  <option value={-1}>Descending</option>
+                </select>
+
+
+            {/* <div className="dropdown dropdown-hover">
+              <label
+                tabIndex={0}
+                className="btn m-1 bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue"
+              >
                 Sort By Price
               </label>
               <ul
@@ -84,7 +101,8 @@ const MyToys = () => {
                   <a>Descending</a>
                 </li>
               </ul>
-            </div>
+            </div> */}
+
           </div>
 
           <div className="overflow-x-auto  w-full mb-10">
