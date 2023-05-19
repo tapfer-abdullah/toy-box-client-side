@@ -6,11 +6,13 @@ import "react-tabs/style/react-tabs.css";
 import ViewDetails from "../Shared/ViewDetails";
 import { AuthContext } from "../AuthorizationPage/AuthProvider";
 import "../../Pages/Shared/CustomStyle.css";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const ShopByCategory = () => {
   // Police-Car Super-Car Truck
 
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [category, setCategory] = useState("");
   const [cars, setCars] = useState([]);
   const [singleData, setSingleData] = useState({});
@@ -52,112 +54,151 @@ const ShopByCategory = () => {
             {/* <h2>Any content 1</h2> */}
             <div className="grid grid-cols-4 gap-4 ">
               {cars.map((car) => (
-                <div 
-                // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
-                className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold" 
-                key={car._id}>
-                  <img src={car?.photo} alt="" className="w-[295px] h-[295px]" />
+                <div
+                  // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
+                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold"
+                  key={car._id}
+                >
+                  <img
+                    src={car?.photo}
+                    alt=""
+                    className="w-[295px] h-[295px]"
+                  />
                   <h3 className="text-2xl font-semibold">{car?.name}</h3>
-                  <div className="flex justify-between mb-4 mt-2 text-lg">
+                  <div className=" mb-4 mt-2 text-lg">
                     <p>Price: ${car?.price}</p>
-                    <p>Rating: {car?.rating}</p>
+                    <p className="flex items-center">
+                      
+                      <Rating
+                        style={{ maxWidth: 120 }}
+                        value={car.rating}
+                        readOnly
+                      />
+                      <span className="ml-2">{car?.rating}</span>
+                    </p>
                   </div>
 
                   <div className="">
-                  {!user ? (
-                    <Link
-                      to="/login"
-                      className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
-                    >
-                      View Details
-                    </Link>
-                  ) : (
-                    <label
-                      onClick={() => {
-                        setSingleData(car);
-                      }}
-                      htmlFor="my-modal-3"
-                      className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
-                    >
-                      View Details
-                    </label>
-                  )}
+                    {!user ? (
+                      <Link
+                        to="/login"
+                        className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
+                      >
+                        View Details
+                      </Link>
+                    ) : (
+                      <label
+                        onClick={() => {
+                          setSingleData(car);
+                        }}
+                        htmlFor="my-modal-3"
+                        className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
+                      >
+                        View Details
+                      </label>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-          <div className="grid grid-cols-4 gap-4 ">
+            <div className="grid grid-cols-4 gap-4 ">
               {cars.map((car) => (
-                <div 
-                // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
-                className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold" 
-                key={car._id}>
-                  <img src={car?.photo} alt="" className="w-[295px] h-[295px]" />
+                <div
+                  // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
+                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold"
+                  key={car._id}
+                >
+                  <img
+                    src={car?.photo}
+                    alt=""
+                    className="w-[295px] h-[295px]"
+                  />
                   <h3 className="text-2xl font-semibold">{car?.name}</h3>
-                  <div className="flex justify-between mb-4 mt-2 text-lg">
+                  <div className=" mb-4 mt-2 text-lg">
                     <p>Price: ${car?.price}</p>
-                    <p>Rating: {car?.rating}</p>
+                    <p className="flex items-center">
+                      
+                      <Rating
+                        style={{ maxWidth: 120 }}
+                        value={car.rating}
+                        readOnly
+                      />
+                      <span className="ml-2">{car?.rating}</span>
+                    </p>
                   </div>
 
                   <div className="">
-                  {!user ? (
-                    <Link
-                      to="/login"
-                      className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
-                    >
-                      View Details
-                    </Link>
-                  ) : (
-                    <label
-                      onClick={() => {
-                        setSingleData(car);
-                      }}
-                      htmlFor="my-modal-3"
-                      className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
-                    >
-                      View Details
-                    </label>
-                  )}
+                    {!user ? (
+                      <Link
+                        to="/login"
+                        className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
+                      >
+                        View Details
+                      </Link>
+                    ) : (
+                      <label
+                        onClick={() => {
+                          setSingleData(car);
+                        }}
+                        htmlFor="my-modal-3"
+                        className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
+                      >
+                        View Details
+                      </label>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-          <div className="grid grid-cols-4 gap-4 ">
+            <div className="grid grid-cols-4 gap-4 ">
               {cars.map((car) => (
-                <div 
-                // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
-                className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold" 
-                key={car._id}>
-                  <img src={car?.photo} alt="" className="w-[295px] h-[295px]" />
+                <div
+                  // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
+                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold"
+                  key={car._id}
+                >
+                  <img
+                    src={car?.photo}
+                    alt=""
+                    className="w-[295px] h-[295px]"
+                  />
                   <h3 className="text-2xl font-semibold">{car?.name}</h3>
-                  <div className="flex justify-between mb-4 mt-2 text-lg">
+                  <div className=" mb-4 mt-2 text-lg">
                     <p>Price: ${car?.price}</p>
-                    <p>Rating: {car?.rating}</p>
+                    <p className="flex items-center">
+                      
+                      <Rating
+                        style={{ maxWidth: 120 }}
+                        value={car.rating}
+                        readOnly
+                      />
+                      <span className="ml-2">{car?.rating}</span>
+                    </p>
                   </div>
 
                   <div className="">
-                  {!user ? (
-                    <Link
-                      to="/login"
-                      className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
-                    >
-                      View Details
-                    </Link>
-                  ) : (
-                    <label
-                      onClick={() => {
-                        setSingleData(car);
-                      }}
-                      htmlFor="my-modal-3"
-                      className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
-                    >
-                      View Details
-                    </label>
-                  )}
+                    {!user ? (
+                      <Link
+                        to="/login"
+                        className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
+                      >
+                        View Details
+                      </Link>
+                    ) : (
+                      <label
+                        onClick={() => {
+                          setSingleData(car);
+                        }}
+                        htmlFor="my-modal-3"
+                        className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
+                      >
+                        View Details
+                      </label>
+                    )}
                   </div>
                 </div>
               ))}
