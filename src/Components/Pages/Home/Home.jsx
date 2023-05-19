@@ -4,6 +4,7 @@ import Banner from './Banner';
 import Gallery from './Gallery';
 import ShopByCategory from './ShopByCategory';
 import useTitle from '../../Title/Title';
+import SingUpForUpdate from './SingUpForUpdate';
 
 const Home = () => {
     useTitle("Home");
@@ -11,6 +12,7 @@ const Home = () => {
         <div className='max-w-7xl mx-auto'>
             <Banner></Banner>
             <Gallery></Gallery>
+            <SingUpForUpdate></SingUpForUpdate>
             <ShopByCategory></ShopByCategory>
         </div>
     );
