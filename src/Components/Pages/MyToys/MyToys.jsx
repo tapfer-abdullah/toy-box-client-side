@@ -9,12 +9,21 @@ const MyToys = () => {
   const { user, loader } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [del, setDel] = useState(0);
+  const [sort, setSort] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-toys?email=${user?.email}`)
+    fetch(`http://localhost:5000/my-toys?email=${user?.email}`, {
+
+    method: "get",
+        headers: {
+            "Content-Type" : "application/json",
+            "sort" : sort
+        },
+        // body: JSON.stringify({sort}),  
+    })
       .then((res) => res.json())
       .then((data) => setMyToys(data));
-  }, [loader, del]);
+  }, [loader, del, sort]);
 
   const handleDelete = (id) => {
     // alert(`delete ${id}`)
@@ -35,12 +44,8 @@ const MyToys = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-                setDel(del+1);
-                Swal.fire(
-                  'Deleted!',
-                  'The car has been deleted.',
-                  'success'
-                )
+              setDel(del + 1);
+              Swal.fire("Deleted!", "The car has been deleted.", "success");
             }
           });
       }
@@ -62,31 +67,52 @@ const MyToys = () => {
           />
         </div>
       ) : (
-        <div className="overflow-x-auto  w-full my-10">
-          <table className="table w-full">
-            {/* head */}
-            <thead>
-              <tr className="text-center text-my-blue">
-                <th>Delete</th>
-                <th>Toy Photo</th>
-                <th>Toy Name</th>
-                <th>Price</th>
-                <th>Available Quantity</th>
-                <th>Seller</th>
-                <th>Sub-category</th>
-                <th>Update</th>
-              </tr>
-            </thead>
-            <tbody>
-              {myToys.map((toy) => (
-                <SingleMyToy
-                  key={toy._id}
-                  toy={toy}
-                  handleDelete={handleDelete}
-                ></SingleMyToy>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-10">
+          <div className="flex justify-end my-3"> 
+            <div className="dropdown dropdown-hover">
+              <label tabIndex={0} className="btn m-1 bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue">
+                Sort By Price
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-40 text-my-blue"
+              >
+                <li onClick={() => setSort(1)} className="hover:text-my-pink">
+                  <a>Ascending</a>
+                </li>
+                <li onClick={() => setSort(-1)} className="hover:text-my-pink">
+                  <a>Descending</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto  w-full mb-10">
+            <table className="table w-full">
+              {/* head */}
+              <thead>
+                <tr className="text-center text-my-blue">
+                  <th>Delete</th>
+                  <th>Toy Photo</th>
+                  <th>Toy Name</th>
+                  <th>Price</th>
+                  <th>Available Quantity</th>
+                  <th>Seller</th>
+                  <th>Sub-category</th>
+                  <th>Update</th>
+                </tr>
+              </thead>
+              <tbody>
+                {myToys.map((toy) => (
+                  <SingleMyToy
+                    key={toy._id}
+                    toy={toy}
+                    handleDelete={handleDelete}
+                  ></SingleMyToy>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
