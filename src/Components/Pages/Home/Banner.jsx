@@ -19,11 +19,11 @@ const Banner = () => {
       style={{ background: "rgba(0, 0, 0, .5)" }}
     >
       <div className="text-white">
-        <div className="w-2/3 mx-auto text-center "  data-aos="zoom-in-up">
-          <h2 className="text-6xl font-bold uppercase">
+        <div className="w-full md:w-2/3 mx-auto text-center "  data-aos="zoom-in-up">
+          <h2 className="text-3xl w-3/4 md:w-full mx-auto md:text-6xl font-bold uppercase">
             Pick your best toy for your kid
           </h2>
-          <p className="mb-6 mt-4 text-xl">
+          <p className="mb-6 mt-4 text-lg w-2/3 md:w-full mx-auto md:text-xl">
             Make play time a blast with our finest toys and games!
           </p>
           <div>

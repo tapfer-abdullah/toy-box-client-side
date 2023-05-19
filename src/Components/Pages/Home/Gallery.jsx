@@ -27,7 +27,7 @@ const Gallery = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
         {gallery.map((g) => (
           <>
-            <div className=" mx-2 rounded-lg">
+            <div className=" md:mx-2 rounded-lg mx-auto">
               <img
                 src={g.img}
                 alt=""

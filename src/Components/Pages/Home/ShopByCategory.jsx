@@ -52,11 +52,11 @@ const ShopByCategory = () => {
 
           <TabPanel>
             {/* <h2>Any content 1</h2> */}
-            <div className="grid grid-cols-4 gap-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 ">
               {cars.map((car) => (
                 <div
                   // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
-                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold"
+                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold mx-auto"
                   key={car._id}
                 >
                   <img
@@ -103,11 +103,11 @@ const ShopByCategory = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-4 gap-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 ">
               {cars.map((car) => (
                 <div
                   // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
-                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold"
+                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold mx-auto"
                   key={car._id}
                 >
                   <img
@@ -154,11 +154,11 @@ const ShopByCategory = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-4 gap-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 ">
               {cars.map((car) => (
                 <div
                   // style={{"box-shadow": "3px 4px 10px 0px #929492"}}
-                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold"
+                  className="border-my-blue border-2 rounded-lg p-3 text-md font-semibold mx-auto"
                   key={car._id}
                 >
                   <img

@@ -21,7 +21,7 @@ const ViewDetails = ({ singleData }) => {
         {/* Put this part before </body> tag */}
         <input type="checkbox" id="my-modal-3" className="modal-toggle" />
         <div className="modal">
-          <div className="modal-box w-3/5 max-w-5xl flex justify-around items-center p-5 border-double border-2 border-my-pink shadow-lg">
+          <div className="modal-box w-3/5 max-w-5xl md:flex justify-around items-center p-5 border-double border-2 border-my-pink shadow-lg">
             <div>
               <img src={singleData?.photo} className="w-96 h-80 p-5" alt="" />
             </div>
