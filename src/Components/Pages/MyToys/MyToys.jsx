@@ -5,6 +5,7 @@ import { AuthContext } from "../AuthorizationPage/AuthProvider";
 import { Bars } from "react-loader-spinner";
 import Swal from "sweetalert2";
 import useTitle from "../../Title/Title";
+import noImg from "../../../../public/nodata1.png";
 
 const MyToys = () => {
   useTitle("My-Toys");
@@ -55,10 +56,10 @@ const MyToys = () => {
     });
   };
 
-  const handleFilter = event =>{
+  const handleFilter = (event) => {
     console.log(event.target.value);
     setSort(event.target.value);
-  }
+  };
 
   return (
     <div style={{ minHeight: "70vh" }}>
@@ -77,53 +78,44 @@ const MyToys = () => {
       ) : (
         <div className="mt-10">
           <div className="flex justify-end my-3">
-            
-                <select onChange={handleFilter} className="select select-bordered bg-my-blue text-white font-bold text-lg">
-                  <option disabled selected >
-                  Sort By Price
-                  </option>
-                  <option value={1}>Ascending</option>
-                  <option value={-1}>Descending</option>
-                </select>
-
-
-            {/* <div className="dropdown dropdown-hover">
-              <label
-                tabIndex={0}
-                className="btn m-1 bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue"
-              >
+            <select
+              onChange={handleFilter}
+              className="select select-bordered bg-my-blue text-white font-bold text-lg"
+            >
+              <option disabled selected>
                 Sort By Price
-              </label>
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-40 text-my-blue"
-              >
-                <li onClick={() => setSort(1)} className="hover:text-my-pink">
-                  <a>Ascending</a>
-                </li>
-                <li onClick={() => setSort(-1)} className="hover:text-my-pink">
-                  <a>Descending</a>
-                </li>
-              </ul>
-            </div> */}
-
+              </option>
+              <option value={1}>Ascending</option>
+              <option value={-1}>Descending</option>
+            </select>
           </div>
 
           <div className="overflow-x-auto  w-full mb-10">
             <table className="table w-full">
-              {/* head */}
-              <thead>
-                <tr className="text-center text-my-blue">
-                  <th>Delete</th>
-                  <th>Toy Photo</th>
-                  <th>Toy Name</th>
-                  <th>Price</th>
-                  <th>Available Quantity</th>
-                  <th>Seller</th>
-                  <th>Sub-category</th>
-                  <th>Update</th>
-                </tr>
-              </thead>
+              {myToys.length == 0 ? (
+                <div className="flex justify-center">
+                  <div>
+                    <img src={noImg} alt="" className="" />
+                    <p className="text-red text-2xl font-semibold text-center">
+                      No data found
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <thead>
+                  <tr className="text-center text-my-blue">
+                    <th>Delete</th>
+                    <th>Toy Photo</th>
+                    <th>Toy Name</th>
+                    <th>Price</th>
+                    <th>Available Quantity</th>
+                    <th>Seller</th>
+                    <th>Sub-category</th>
+                    <th>Update</th>
+                  </tr>
+                </thead>
+              )}
+
               <tbody>
                 {myToys.map((toy) => (
                   <SingleMyToy
