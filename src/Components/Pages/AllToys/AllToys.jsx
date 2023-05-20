@@ -47,6 +47,15 @@ const AllToys = () => {
 
   return (
     <div>
+      <div className="text-center my-12">
+        <h3 className="text-3xl font-semibold mb-3 text-my-blue">
+          All <span className="text-my-pink">Toys</span>
+        </h3>
+        <p className="text-base">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam, porro
+          iure eligendi vero vel quo.
+        </p>
+      </div>
       <ViewDetails singleData={singleData}></ViewDetails>
 
       {loader ? (
@@ -62,10 +71,10 @@ const AllToys = () => {
           />
         </div>
       ) : (
-        <div className="overflow-x-auto  w-full my-10">
+        <div>
           <form onSubmit={handleSubmit}>
             <div className="form-control my-3">
-              <div className="input-group">
+              <div className="input-group justify-center">
                 <input
                   onChange={handleSearch}
                   name="search"
@@ -96,54 +105,56 @@ const AllToys = () => {
             </div>
           </form>
 
-          <table className="table w-full min-h-[35vh]">
-            {/* head */}
-            {allToys.length == 0 ? (
-              <div className="flex justify-center">
-                <div>
-                  <img src={noImg} alt="" className="" />
-                  <p className="text-red text-2xl font-semibold text-center">
-                    No data found
-                  </p>
+          <div className="overflow-x-auto  w-full mb-10">
+            <table className="table w-full min-h-[35vh]">
+              {/* head */}
+              {allToys.length == 0 ? (
+                <div className="flex justify-center">
+                  <div>
+                    <img src={noImg} alt="" className="" />
+                    <p className="text-red text-2xl font-semibold text-center">
+                      No data found
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <thead>
-                <tr className="text-center text-my-blue">
-                  <th></th>
-                  <th>Toy Photo</th>
-                  <th>Toy Name</th>
-                  <th>Price</th>
-                  <th>Available Quantity</th>
-                  <th>Seller</th>
-                  <th>Sub-category</th>
-                  <th>View Details</th>
-                </tr>
-              </thead>
-            )}
-            <tbody>
-              {allToys.map((toy) => (
-                <SingleToyCard
-                  key={toy._id}
-                  toy={toy}
-                  setSingleData={setSingleData}
-                ></SingleToyCard>
-              ))}
-            </tbody>
-          </table>
-          <div
-            className={`flex items-center justify-center ${
-              limit == 0 && "hidden"
-            } ${allToys.length < 20 && "hidden"}`}
-          >
-            <button
-              onClick={() => {
-                setLimit(0);
-              }}
-              className="btn px-10 text-base font-semibold bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue"
+              ) : (
+                <thead>
+                  <tr className="text-center text-my-blue">
+                    <th></th>
+                    <th>Toy Photo</th>
+                    <th>Toy Name</th>
+                    <th>Price</th>
+                    <th>Available Quantity</th>
+                    <th>Seller</th>
+                    <th>Sub-category</th>
+                    <th>View Details</th>
+                  </tr>
+                </thead>
+              )}
+              <tbody>
+                {allToys.map((toy) => (
+                  <SingleToyCard
+                    key={toy._id}
+                    toy={toy}
+                    setSingleData={setSingleData}
+                  ></SingleToyCard>
+                ))}
+              </tbody>
+            </table>
+            <div
+              className={`flex items-center justify-center ${
+                limit == 0 && "hidden"
+              } ${allToys.length < 20 && "hidden"}`}
             >
-              See All
-            </button>
+              <button
+                onClick={() => {
+                  setLimit(0);
+                }}
+                className="btn px-10 text-base font-semibold bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue"
+              >
+                See All
+              </button>
+            </div>
           </div>
         </div>
       )}

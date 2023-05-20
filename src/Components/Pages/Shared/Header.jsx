@@ -113,8 +113,8 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             {menu}
-            {/* {user && conditionalMenu} */}
-            {conditionalMenu}
+            {user && conditionalMenu}
+            {/* {conditionalMenu} */}
           </ul>
         </div>
         <div className="navbar-end">
