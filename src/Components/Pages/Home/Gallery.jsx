@@ -12,7 +12,7 @@ const Gallery = () => {
       .then((data) => setGallery(data));
   }, []);
 
-  console.log(gallery);
+  // console.log(gallery);
 
   return (
     <div className="mb-24">

@@ -1,21 +1,36 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "./AuthProvider";
 import useTitle from "../../Title/Title";
+import Swal from "sweetalert2";
 
 const Login = () => {
   useTitle("Login");
   const [error, setError] = useState("");
   const { user, LoginWGoogle, Login } = useContext(AuthContext);
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+  const destination = location?.state?.from || "/";
+  console.log(destination)
+
 
   const handleLoginWGoogle = () => {
     LoginWGoogle()
       .then((result) => {
         console.log(result.user);
         setError("");
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Login successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        navigate(destination);
       })
       .catch((error) => {
         console.log(error);
@@ -35,6 +50,14 @@ const Login = () => {
     .then(r => {
       console.log(r.user);
       setError("");
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Login successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      navigate(destination);
     })
     .catch(err =>{
       console.log(err);

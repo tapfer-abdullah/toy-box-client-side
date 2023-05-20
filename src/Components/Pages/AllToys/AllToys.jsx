@@ -23,14 +23,16 @@ const AllToys = () => {
 
   useEffect(() => {
     // fetch(`http://localhost:5000/all-toys?limit=${limit}&name=${search}`)
-    fetch(`https://toy-box-server.vercel.app/all-toys?limit=${limit}&name=${search}`)
+    fetch(
+      `https://toy-box-server.vercel.app/all-toys?limit=${limit}&name=${search}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setAllToy(data);
       });
   }, [limit, search]);
 
-  console.log(allToys);
+  // console.log(allToys);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,7 +70,7 @@ const AllToys = () => {
                   onChange={handleSearch}
                   name="search"
                   type="text"
-                  placeholder="Search by name"
+                  placeholder="Search by toy name"
                   className="input input-bordered"
                 />
                 <button

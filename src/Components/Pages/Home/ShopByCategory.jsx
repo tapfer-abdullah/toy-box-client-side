@@ -29,7 +29,7 @@ const ShopByCategory = () => {
       });
   }, [category]);
 
-  console.log(cars);
+  // console.log(cars);
 
   return (
     <div>

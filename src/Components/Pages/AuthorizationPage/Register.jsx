@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "./AuthProvider";
 import useTitle from "../../Title/Title";
+import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Register = () => {
   useTitle("Register");
@@ -11,9 +13,21 @@ const Register = () => {
   const { Register, LoginWGoogle, Logout, handleUpdateProfile } =
     useContext(AuthContext);
 
+  const navigate = useNavigate();
+
   const handleLoginWGoogle = () => {
     LoginWGoogle()
-      .then((result) => console.log(result.user))
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Login successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        navigate("/");
+      })
       .catch((error) => {
         setError(error.message);
         console.log(error);
@@ -38,6 +52,15 @@ const Register = () => {
             console.log("profile updated");
             // Logout();
             event.target.reset();
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: 'Registration successful. Please Login',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            navigate("/login");
+
           })
           .catch((error) => {
             console.log("update error", error);
@@ -53,6 +76,7 @@ const Register = () => {
 
   return (
     <div>
+      
       {/* <div className="hero bg-base-200"> */}
       <div className="hero">
         <div className="card my-10 w-4/5 md:w-2/5 px-5 md:px-8 shadow-2xl bg-base-100">
@@ -142,6 +166,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      {/* <ToastContainer /> */}
     </div>
   );
 };
