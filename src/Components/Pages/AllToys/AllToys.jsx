@@ -10,6 +10,7 @@ import { Bars } from "react-loader-spinner";
 import useTitle from "../../Title/Title";
 import ViewDetails from "../Shared/ViewDetails";
 AOS.init();
+import noImg from "../../../../public/nodata1.png";
 
 const AllToys = () => {
   useTitle("All-Toys");
@@ -18,16 +19,30 @@ const AllToys = () => {
   // const allToys = useLoaderData();
   const [singleData, setSingleData] = useState({});
   const [limit, setLimit] = useState(20);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/all-toys?limit=${limit}`)
+    // fetch(`http://localhost:5000/all-toys?limit=${limit}&name=${search}`)
+    fetch(`https://toy-box-server.vercel.app/all-toys?limit=${limit}&name=${search}`)
       .then((res) => res.json())
       .then((data) => {
         setAllToy(data);
       });
-  }, [limit]);
+  }, [limit, search]);
 
   console.log(allToys);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(event.target.search.value);
+    setSearch(event.target.search.value);
+  };
+  const handleSearch = (event) => {
+    event.preventDefault();
+    console.log(event.target.value);
+    setSearch(event.target.value);
+  };
+
   return (
     <div>
       <ViewDetails singleData={singleData}></ViewDetails>
@@ -46,23 +61,64 @@ const AllToys = () => {
         </div>
       ) : (
         <div className="overflow-x-auto  w-full my-10">
+          <form onSubmit={handleSubmit}>
+            <div className="form-control my-3">
+              <div className="input-group">
+                <input
+                  onChange={handleSearch}
+                  name="search"
+                  type="text"
+                  placeholder="Search by name"
+                  className="input input-bordered"
+                />
+                <button
+                  type="submit"
+                  className="btn btn-square bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
 
-          
-
-          <table className="table w-full">
+          <table className="table w-full min-h-[35vh]">
             {/* head */}
-            <thead>
-              <tr className="text-center text-my-blue">
-                <th></th>
-                <th>Toy Photo</th>
-                <th>Toy Name</th>
-                <th>Price</th>
-                <th>Available Quantity</th>
-                <th>Seller</th>
-                <th>Sub-category</th>
-                <th>View Details</th>
-              </tr>
-            </thead>
+            {allToys.length == 0 ? (
+              <div className="flex justify-center">
+                <div>
+                  <img src={noImg} alt="" className="" />
+                  <p className="text-red text-2xl font-semibold text-center">
+                    No data found
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <thead>
+                <tr className="text-center text-my-blue">
+                  <th></th>
+                  <th>Toy Photo</th>
+                  <th>Toy Name</th>
+                  <th>Price</th>
+                  <th>Available Quantity</th>
+                  <th>Seller</th>
+                  <th>Sub-category</th>
+                  <th>View Details</th>
+                </tr>
+              </thead>
+            )}
             <tbody>
               {allToys.map((toy) => (
                 <SingleToyCard
@@ -76,7 +132,7 @@ const AllToys = () => {
           <div
             className={`flex items-center justify-center ${
               limit == 0 && "hidden"
-            }`}
+            } ${allToys.length < 20 && "hidden"}`}
           >
             <button
               onClick={() => {
