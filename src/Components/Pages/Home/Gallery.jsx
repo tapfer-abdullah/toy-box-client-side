@@ -6,8 +6,8 @@ const Gallery = () => {
   const [gallery, setGallery] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/gallery")
-    // fetch("https://toy-box-server.vercel.app/gallery")
+    // fetch("http://localhost:5000/gallery")
+    fetch("https://toy-box-server.vercel.app/gallery")
       .then((res) => res.json())
       .then((data) => setGallery(data));
   }, []);

@@ -3,6 +3,7 @@ import React from "react";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import { Link } from "react-router-dom";
 AOS.init();
 
 
@@ -27,9 +28,9 @@ const Banner = () => {
             Make play time a blast with our finest toys and games!
           </p>
           <div>
-            <button className="btn font-bold bg-my-pink border-my-pink text-white hover:bg-my-blue mr-5 hover:border-my-blue">
+            <Link to="/all-toys" className="btn font-bold bg-my-pink border-my-pink text-white hover:bg-my-blue mr-5 hover:border-my-blue">
               Purchase Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>

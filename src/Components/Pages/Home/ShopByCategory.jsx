@@ -18,7 +18,8 @@ const ShopByCategory = () => {
   const [singleData, setSingleData] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys?category=${category}`)
+    // fetch(`http://localhost:5000/toys?category=${category}`)
+    fetch(`https://toy-box-server.vercel.app/toys?category=${category}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 4) {
@@ -64,6 +65,7 @@ const ShopByCategory = () => {
                     alt=""
                     className="w-[295px] h-[295px]"
                   />
+                  <div className="divider"></div>
                   <h3 className="text-2xl font-semibold">{car?.name}</h3>
                   <div className=" mb-4 mt-2 text-lg">
                     <p>Price: ${car?.price}</p>
@@ -115,6 +117,7 @@ const ShopByCategory = () => {
                     alt=""
                     className="w-[295px] h-[295px]"
                   />
+                  <div className="divider"></div>
                   <h3 className="text-2xl font-semibold">{car?.name}</h3>
                   <div className=" mb-4 mt-2 text-lg">
                     <p>Price: ${car?.price}</p>
@@ -166,6 +169,7 @@ const ShopByCategory = () => {
                     alt=""
                     className="w-[295px] h-[295px]"
                   />
+                  <div className="divider"></div>
                   <h3 className="text-2xl font-semibold">{car?.name}</h3>
                   <div className=" mb-4 mt-2 text-lg">
                     <p>Price: ${car?.price}</p>
