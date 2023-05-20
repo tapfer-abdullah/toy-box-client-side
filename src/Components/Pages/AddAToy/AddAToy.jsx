@@ -5,6 +5,7 @@ import useTitle from "../../Title/Title";
 
 
 const AddAToy = () => {
+  const [fill, setFill] = useState(false);
   useTitle("Add-New-Toy");
   const [ctgry, setCtgry] = useState("");
 
@@ -28,6 +29,21 @@ const AddAToy = () => {
     const photo = form.photo.value;
     const price = form.price.value;
     const rating = form.rating.value;
+
+
+    if(name && quantity && seller && sellerEmail && category && details && photo && price && rating){
+      setFill(true);
+    }
+    else{
+      Swal.fire({
+        title: "Unable to add!",
+        text: "Fill all the input fields",
+        icon: "warning",
+        confirmButtonText: "Okay",
+      });
+      return
+    }
+    // console.log(fill);
 
     const toy = {
       name,
@@ -246,6 +262,7 @@ const AddAToy = () => {
         </div>
 
         <input
+        // disabled={!fill && true}
           type="submit"
           value="Add New Car"
           className="btn drop-shadow-2xl btn-block bg-my-pink border-my-pink hover:bg-my-blue hover:border-my-blue"
