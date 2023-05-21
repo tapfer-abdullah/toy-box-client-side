@@ -6,7 +6,7 @@ import React from "react";
 const CustomerReview = () => {
   return (
     <div className="bg-base-200 p-20 text-center rounded-tr-xl rounded-tl-xl ">
-      <h3 className="text-3xl font-semibold">HAPPY CUSTOMERS</h3>
+      <h3 className="text-3xl font-semibold mb-5">HAPPY CUSTOMERS</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div>
           <Rating className="my-4 mx-auto" style={{ maxWidth: 120 }} value={5} readOnly />

@@ -19,8 +19,7 @@ const Gallery = () => {
       <div className="text-center mt-24 mb-8">
         <h3 className="text-3xl font-semibold mb-3">Gallery</h3>
         <p className="text-base">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam, porro
-          iure eligendi vero vel quo.
+        Make play time a blast with our finest toys and games!
         </p>
       </div>
       
