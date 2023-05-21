@@ -36,14 +36,14 @@ const UpdateMyToy = () => {
     const form = event.target;
 
     const name = form.name.value;
-    const quantity = form.quantity.value;
+    const quantity = parseInt(form.quantity.value);
     const seller = form.seller.value;
     const sellerEmail = form.sellerEmail.value;
     // const category = form.category.value;
     const category = ctgry;
     const details = form.details.value;
     const photo = form.photo.value;
-    const price = form.price.value;
+    const price = parseFloat(form.price.value);
     const rating = form.rating.value;
 
     const toy = {

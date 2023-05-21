@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useTitle from "../../Title/Title";
+import { AuthContext } from "../AuthorizationPage/AuthProvider";
 
 
 const AddAToy = () => {
   const [fill, setFill] = useState(false);
+  const {user} = useContext(AuthContext);
   useTitle("Add-New-Toy");
   const [ctgry, setCtgry] = useState("");
 
@@ -20,14 +22,14 @@ const AddAToy = () => {
     const form = event.target;
 
     const name = form.name.value;
-    const quantity = form.quantity.value;
+    const quantity = parseInt(form.quantity.value);
     const seller = form.seller.value;
     const sellerEmail = form.sellerEmail.value;
     // const category = form.category.value;
     const category = ctgry;
     const details = form.details.value;
     const photo = form.photo.value;
-    const price = form.price.value;
+    const price = parseFloat(form.price.value);
     const rating = form.rating.value;
 
 
@@ -151,6 +153,8 @@ const AddAToy = () => {
             </label>
             <label className="input-group">
               <input
+              defaultValue={user?.email}
+              disabled
                 style={{ borderRadius: "10px" }}
                 name="sellerEmail"
                 type="email"

@@ -30,7 +30,7 @@ const SingUpForUpdate = () => {
         <div className="card w-full  shadow-2xl bg-base-100 p-2 md:py-5 md:px-3">
           <div className="card-body">
             <h3 className="mb-4 text-xl md:text-3xl font-bold text-center">New Here</h3>
-            <p className="mb-10 text-base text-neutral-500 md:text-lg text-center font-semibold">Sing up to get update form us</p>
+            <p className="mb-10 text-base text-neutral-500 md:text-lg text-center font-semibold">Sing up to stay updated</p>
             <div className="form-control">
 
               <input
