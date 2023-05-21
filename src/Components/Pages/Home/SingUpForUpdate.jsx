@@ -25,7 +25,7 @@ const SingUpForUpdate = () => {
         <img src={banner} className="w-full h-full" alt="" />
       </div>
 
-      <div className="absolute top-[10%] left-[15%] md:top-8 md:left-28 md:w-1/3 h-full">
+      <div className="absolute top-[10%] left-[15%] right-[15%] md:top-8 md:left-28 md:w-1/3 h-full">
         <form onSubmit={handleGetUpdate}>
         <div className="card w-full  shadow-2xl bg-base-100 p-2 md:py-5 md:px-3">
           <div className="card-body">

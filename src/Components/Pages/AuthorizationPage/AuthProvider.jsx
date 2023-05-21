@@ -29,6 +29,23 @@ const AuthProvider = ({ children }) => {
       setUser(loadedUser);
       setLoader(false);
       // console.log(loadedUser);
+      if(loadedUser){
+        const userSend = {email: loadedUser.email};
+        fetch("http://localhost:5000/jsw",{
+          method: "post",
+          headers: {
+            "content-type" : "application/json"
+          },
+          body: JSON.stringify(userSend)
+        })
+        .then(res => res.json())
+        .then(token => {
+          localStorage.setItem("access-token", token.token)
+        })
+      }
+      else{
+        localStorage.removeItem("access-token");
+      }
     });
   }, []);
 

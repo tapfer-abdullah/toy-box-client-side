@@ -6,13 +6,16 @@ import { Bars } from "react-loader-spinner";
 import Swal from "sweetalert2";
 import useTitle from "../../Title/Title";
 import noImg from "../../../../public/nodata1.png";
+import { useNavigate } from "react-router-dom";
 
 const MyToys = () => {
   useTitle("My-Toys");
-  const { user, loader } = useContext(AuthContext);
+  const { user, loader, Logout } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [del, setDel] = useState(0);
   const [sort, setSort] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // fetch(`http://localhost:5000/my-toys?email=${user?.email}`, {
@@ -21,11 +24,28 @@ const MyToys = () => {
       headers: {
         "Content-Type": "application/json",
         sort: sort,
+        authorization: `barer ${localStorage.getItem("access-token")}`
       },
       // body: JSON.stringify({sort}),
     })
       .then((res) => res.json())
-      .then((data) => setMyToys(data));
+      .then((data) => {
+        console.log(data)
+        // setMyToys(data)
+
+        if(!data?.error){
+          setMyToys(data);
+        }
+        else{
+          Logout()
+          .then(()=>{
+            navigate("/login");
+          })
+          .catch(error => {
+            console.log(error)
+          })
+        }
+      });
   }, [loader, del, sort]);
 
   const handleDelete = (id) => {

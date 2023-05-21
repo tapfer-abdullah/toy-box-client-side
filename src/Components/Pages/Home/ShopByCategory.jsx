@@ -8,6 +8,7 @@ import { AuthContext } from "../AuthorizationPage/AuthProvider";
 import "../../Pages/Shared/CustomStyle.css";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import Swal from "sweetalert2";
 
 const ShopByCategory = () => {
   // Police-Car Super-Car Truck
@@ -30,6 +31,15 @@ const ShopByCategory = () => {
   }, [category]);
 
   // console.log(cars);
+
+  const showMessage = ()=>{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'You are not nog in yet! Login to see details',
+      // footer: '<a href="">Why do I have this issue?</a>'
+    })
+  }
 
   return (
     <div>
@@ -82,7 +92,7 @@ const ShopByCategory = () => {
 
                   <div className="">
                     {!user ? (
-                      <Link
+                      <Link onClick={showMessage}
                         to="/login"
                         className="btn btn-sm btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue"
                       >

@@ -157,6 +157,7 @@ const UpdateMyToy = () => {
             </label>
             <label className="input-group">
               <input
+              disabled
                 defaultValue={sellerEmail}
                 style={{ borderRadius: "10px" }}
                 name="sellerEmail"

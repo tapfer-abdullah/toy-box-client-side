@@ -7,8 +7,8 @@ import logo from "../../../../public/mybox.ico";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer p-10 bg-base-200 text-base-content">
+    <div className="bg-base-200">
+      <footer className="footer p-10 bg-base-200 text-base-content max-w-7xl mx-auto">
         <div>
           <span className="footer-title">EXTRAS</span>
           <a className="hover:text-my-pink hover:cursor-pointer">Brands</a>
@@ -79,7 +79,7 @@ const Footer = () => {
           </a>
         </div>
       </footer>
-      <footer className="footer px-10 pt-4 border-t bg-base-200 text-base-content border-base-300">
+      <footer className="footer px-10 pt-4 border-t bg-base-200 text-base-content border-base-300 max-w-7xl mx-auto">
         <div className="items-center grid-flow-col">
           <img src={logo} alt="" />
           <p>

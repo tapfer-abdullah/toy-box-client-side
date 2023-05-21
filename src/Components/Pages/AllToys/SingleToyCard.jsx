@@ -3,6 +3,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthorizationPage/AuthProvider";
+import Swal from "sweetalert2";
 
 const SingleToyCard = ({ toy, setSingleData }) => {
   const { user } = useContext(AuthContext);
@@ -18,6 +19,16 @@ const SingleToyCard = ({ toy, setSingleData }) => {
     price,
     rating,
   } = toy;
+
+  const showMessage = ()=>{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'You are not nog in yet! Login to see details',
+      // footer: '<a href="">Why do I have this issue?</a>'
+    })
+  }
+
   return (
     // <div>
     //   <img src={photo} alt="" className="w-96 h-96"/>
@@ -42,7 +53,7 @@ const SingleToyCard = ({ toy, setSingleData }) => {
       <td className="text-my-blue font-semibold">{category}</td>
       <th>
         {!user ? (
-          <Link to="/login" className="btn btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue">
+          <Link onClick={showMessage} to="/login" className="btn btn-outline border-my-pink text-my-pink hover:border-my-blue hover:bg-my-blue">
             View Details
           </Link>
         ) : (
