@@ -20,9 +20,9 @@ const SingUpForUpdate = () => {
     
 
   return (
-    <div className="relative h-[500px]">
+    <div className="relative h-[500px] rounded-bl-xl rounded-br-xl">
       <div className="w-full h-[500px]">
-        <img src={banner} className="w-full h-full" alt="" />
+        <img src={banner} className="w-full h-full rounded-bl-xl rounded-br-xl" alt="" />
       </div>
 
       <div className="absolute top-[10%] left-[15%] right-[15%] md:top-8 md:left-28 md:w-1/3 h-full">
