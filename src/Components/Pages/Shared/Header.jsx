@@ -3,6 +3,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthorizationPage/AuthProvider";
+import logo from "../../../../public/mybox.ico";
 
 const Header = () => {
   // Website logo, Website name, Home, All Toys, My Toys, Add A Toy, Blogs, and User profile picture.
@@ -106,7 +107,10 @@ const Header = () => {
               {user && conditionalMenu}
             </ul>
           </div>
-          <Link to="/" className="text-my-blue text-5xl font-bold">
+          <Link to="/" className="text-my-blue text-3xl md:text-5xl font-bold relative flex items-center">
+            <img src={logo} alt="" 
+            // className="absolute bottom-5 -left-10" 
+            />
             Toy<span className="text-my-pink ">Box</span>
           </Link>
         </div>

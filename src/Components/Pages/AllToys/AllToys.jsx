@@ -44,6 +44,7 @@ const AllToys = () => {
     console.log(event.target.value);
     setSearch(event.target.value);
   };
+  
 
   return (
     <div>
